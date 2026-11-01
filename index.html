@@ -1,119 +1,393 @@
-<!doctype html>
-<html lang="ko">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <title>부여 미륵사</title>
-<meta name="description" content="충남 부여 미륵사 — 미륵부처님의 자비가 머무는 도량">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Song+Myung&family=IBM+Plex+Sans+KR:wght@400;500;700&display=swap">
 <style>
-:root{--ink:#2b2118;--muted:#6e5f50;--paper:#faf6ef;--line:#e6dccb;--accent:#8a2f1e;--gold:#b8893a;--dark:#1f1813}
-*{box-sizing:border-box;margin:0;padding:0}
+/* Layout: 산사 능선 히어로 → 상담 동선(문제→과정→비용→신청) → 사찰(법회·소개·오시는 길) → 하단 고정 행동 바 */
+:root{
+  --paper:#f4f5f0;        /* 한지 바탕, 솔잎 쪽으로 살짝 */
+  --paper-2:#e8ebe2;
+  --ink:#1c2b28;          /* 먹 */
+  --ink-soft:#4a5a55;
+  --pine:#1d4a42;         /* 솔빛 녹청 */
+  --gold:#a77d2c;         /* 개금 금빛 */
+  --dan:#a5432f;          /* 단청 주홍, 아주 적게 */
+  --line:#cfd5c8;
+  --on-pine:#f4f5f0;
+  --todo:#a5432f;
+  --f-display:"Song Myung","Nanum Myeongjo",serif;
+  --f-body:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --fs:18px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#121a18;--paper-2:#1a2421;--ink:#e6e9e1;--ink-soft:#a9b5ad;--pine:#2f6a5f;--gold:#d2a957;--dan:#d9725c;--line:#2c3a36;--on-pine:#f4f5f0;--todo:#e08a73;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#121a18;--paper-2:#1a2421;--ink:#e6e9e1;--ink-soft:#a9b5ad;--pine:#2f6a5f;--gold:#d2a957;--dan:#d9725c;--line:#2c3a36;--on-pine:#f4f5f0;--todo:#e08a73;color-scheme:dark}
+:root.big{--fs:21px}
+
+*{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font-family:'Noto Sans KR',sans-serif;color:var(--ink);background:var(--paper);line-height:1.8;word-break:keep-all}
-h1,h2,h3{font-family:'Noto Serif KR',serif;font-weight:700}
-a{color:inherit;text-decoration:none}
-.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
-header{position:fixed;top:0;left:0;right:0;z-index:10;background:rgba(31,24,19,.85);backdrop-filter:blur(6px);color:#f3e9d8}
-header .wrap{display:flex;justify-content:space-between;align-items:center;height:60px}
-.logo{font-family:'Noto Serif KR',serif;font-size:1.3rem;font-weight:700;letter-spacing:.1em}
-nav a{margin-left:22px;font-size:.95rem;opacity:.85}
-nav a:hover{opacity:1;color:var(--gold)}
-.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff;
- background:linear-gradient(rgba(20,14,10,.45),rgba(20,14,10,.6)),url('images/hero.jpg') center/cover,linear-gradient(135deg,#4a3526,#1f1813)}
-.hero small{letter-spacing:.4em;color:var(--gold);font-size:.9rem}
-.hero h1{font-size:clamp(2.6rem,7vw,4.6rem);letter-spacing:.2em;margin:14px 0}
-.hero p{font-family:'Noto Serif KR',serif;font-size:1.15rem;opacity:.9}
-section{padding:96px 0}
-.title{text-align:center;margin-bottom:48px}
-.title small{color:var(--accent);letter-spacing:.3em;font-size:.85rem}
-.title h2{font-size:2rem;margin-top:6px}
-.title h2:after{content:'';display:block;width:40px;height:2px;background:var(--gold);margin:16px auto 0}
-.intro p{max-width:720px;margin:0 auto 1em;text-align:center;font-size:1.05rem;color:var(--muted)}
-.halls{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px}
-.card{background:#fff;border:1px solid var(--line);border-radius:4px;overflow:hidden}
-.ph{aspect-ratio:4/3;background:linear-gradient(135deg,#e9dfcd,#d8c8ac);display:flex;align-items:center;justify-content:center;color:var(--muted);font-family:'Noto Serif KR',serif}
-.ph img{width:100%;height:100%;object-fit:cover;display:block}
-.card div.txt{padding:20px}
-.card h3{font-size:1.2rem;margin-bottom:6px}
-.card p{font-size:.95rem;color:var(--muted)}
-.alt{background:#f2ebdf}
-table{width:100%;max-width:720px;margin:0 auto;border-collapse:collapse;background:#fff}
-th,td{padding:14px 18px;border-bottom:1px solid var(--line);text-align:left}
-th{width:34%;font-family:'Noto Serif KR',serif;color:var(--accent);font-weight:600}
-.visit{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start}
-.visit dl dt{font-family:'Noto Serif KR',serif;color:var(--accent);font-weight:600;margin-top:16px}
-.visit dl dd{color:var(--muted)}
-.map{aspect-ratio:4/3;border:1px solid var(--line);background:#fff}
-.map iframe{width:100%;height:100%;border:0}
-footer{background:var(--dark);color:#bfae95;text-align:center;padding:40px 20px;font-size:.9rem}
-footer strong{color:#f3e9d8;font-family:'Noto Serif KR',serif;letter-spacing:.15em}
-@media(max-width:720px){nav a{margin-left:12px;font-size:.85rem}.visit{grid-template-columns:1fr}section{padding:72px 0}}
-@media(max-width:420px){nav a:nth-child(n+4){display:none}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:var(--fs);line-height:1.75;word-break:keep-all;padding-bottom:84px}
+a{color:var(--pine)}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.wrap{max-width:1040px;margin:0 auto;padding-inline:20px}
+h1,h2,h3{font-family:var(--f-display);font-weight:400;text-wrap:balance;line-height:1.3;margin:0}
+h2{font-size:clamp(1.7rem,4.5vw,2.4rem)}
+h3{font-size:1.3rem}
+p{margin:0}
+.eyebrow{font-size:.78rem;letter-spacing:.14em;color:var(--gold);font-weight:700}
+.todo{color:var(--todo);border:1.5px dashed var(--todo);border-radius:6px;padding:2px 8px;font-size:.85em;display:inline-block}
+
+/* header */
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--paper);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;gap:16px;min-height:64px}
+.brand{display:flex;align-items:baseline;gap:10px;text-decoration:none;color:var(--ink)}
+.brand b{font-family:var(--f-display);font-weight:400;font-size:1.5rem}
+.brand span{font-size:.75rem;color:var(--ink-soft)}
+nav{margin-left:auto;display:flex;gap:4px;flex-wrap:wrap}
+nav a{text-decoration:none;color:var(--ink);padding:8px 10px;border-radius:6px;font-size:.92rem}
+nav a:hover{background:var(--paper-2)}
+.big-btn{border:1px solid var(--line);background:transparent;color:var(--ink);border-radius:6px;padding:6px 10px;font:inherit;font-size:.85rem;cursor:pointer}
+@media (max-width:820px){nav{display:none}.bar{justify-content:space-between}}
+
+/* hero */
+.hero{position:relative;overflow:hidden;background:var(--pine);color:var(--on-pine)}
+.hero.photo-hero{background:linear-gradient(180deg,rgba(13,36,31,.9) 0%,rgba(13,36,31,.74) 50%,rgba(13,36,31,.38) 100%),url(img/hero.jpg) center 62%/cover no-repeat,var(--pine)}
+@media (min-width:900px){.hero.photo-hero{background:linear-gradient(90deg,rgba(13,36,31,.92) 0%,rgba(13,36,31,.72) 45%,rgba(13,36,31,.15) 100%),url(img/hero.jpg) center 60%/cover no-repeat,var(--pine)}}
+.fig{margin:0;display:grid;gap:8px;min-width:0}
+.fig img{width:100%;height:auto;border-radius:10px;display:block;aspect-ratio:var(--ar,16/9);object-fit:cover}
+.fig figcaption{font-size:.85rem;color:var(--ink-soft)}
+.visit-photos{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+@media (max-width:520px){.visit-photos{grid-template-columns:1fr}}
+.hero .wrap{position:relative;z-index:1;padding-block:84px 160px;display:grid;gap:22px}
+.hero h1{font-size:clamp(2.1rem,6.5vw,3.8rem);max-width:15em}
+.hero p.lead{max-width:30em;font-size:1.08rem;opacity:.92}
+.hero .tag{font-family:var(--f-display);font-size:1.1rem;color:var(--gold)}
+:root[data-theme="dark"] .hero .tag{color:#e2bd6d}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:6px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:54px;padding:0 24px;border-radius:8px;font-weight:700;text-decoration:none;font-size:1rem;border:2px solid transparent;cursor:pointer;font-family:inherit}
+.btn-gold{background:var(--gold);color:#1b1407}
+.btn-ghost{border-color:rgba(244,245,240,.55);color:var(--on-pine);background:transparent}
+.btn-pine{background:var(--pine);color:var(--on-pine)}
+.ridge{position:absolute;inset:auto 0 0 0;width:100%;height:170px;display:block}
+
+/* sections */
+section{padding-block:76px}
+section.alt{background:var(--paper-2)}
+.head{display:grid;gap:10px;margin-bottom:34px;max-width:40em}
+.head p{color:var(--ink-soft)}
+
+.worries{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}
+.worry{border-top:2px solid var(--pine);padding-top:14px}
+.worry q{font-family:var(--f-display);font-size:1.22rem;quotes:"“" "”";display:block;margin-bottom:8px}
+.worry p{color:var(--ink-soft);font-size:.95rem}
+
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:26px;counter-reset:s}
+.step{counter-increment:s;display:grid;gap:8px}
+.step::before{content:"STEP " counter(s);font-size:.75rem;letter-spacing:.14em;font-weight:700;color:var(--gold)}
+.step p{color:var(--ink-soft);font-size:.96rem}
+
+.plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.plan{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:26px;display:grid;gap:12px;align-content:start}
+.plan.main{border:2px solid var(--pine)}
+.price{font-family:var(--f-display);font-size:2rem;font-variant-numeric:tabular-nums}
+.price small{font-family:var(--f-body);font-size:.85rem;color:var(--ink-soft)}
+.plan ul{margin:0;padding-left:1.1em;color:var(--ink-soft);font-size:.95rem}
+.ways{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.chip{border:1px solid var(--line);border-radius:999px;padding:4px 14px;font-size:.88rem;background:var(--paper)}
+
+.monk{display:grid;grid-template-columns:minmax(0,260px) minmax(0,1fr);gap:40px;align-items:start}
+@media (max-width:720px){.monk{grid-template-columns:1fr}}
+.portrait{aspect-ratio:3/4;max-width:100%;border:1.5px dashed var(--line);border-radius:10px;display:grid;place-items:center;text-align:center;padding:16px;color:var(--ink-soft);font-size:.9rem;background:var(--paper-2)}
+.photo{width:100%;height:auto;aspect-ratio:640/913;object-fit:cover;border-radius:10px;display:block}
+.monk .body{display:grid;gap:16px;min-width:0}
+.creds{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:6px 22px;font-size:.93rem;color:var(--ink-soft);padding:0;margin:0;list-style:none}
+.creds li{border-bottom:1px solid var(--line);padding-block:6px}
+
+.cases{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}
+.case{background:var(--paper);border-radius:10px;padding:22px;display:grid;gap:10px;align-content:start;border:1px solid var(--line)}
+.case .from{font-size:.85rem;color:var(--ink-soft)}
+.case .to{font-family:var(--f-display);font-size:1.35rem;color:var(--pine)}
+:root[data-theme="dark"] .case .to{color:#7fc0b2}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .case .to{color:#7fc0b2}}
+.case p{font-size:.92rem;color:var(--ink-soft)}
+.note{font-size:.82rem;color:var(--ink-soft);margin-top:16px}
+
+/* schedule */
+.sched{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px}
+@media (max-width:760px){.sched{grid-template-columns:1fr}}
+.days{list-style:none;margin:0;padding:0}
+.days li{display:grid;grid-template-columns:5.4em 1fr auto;gap:12px;align-items:baseline;padding-block:12px;border-bottom:1px solid var(--line)}
+.days .d{font-family:var(--f-display);font-size:1.25rem;font-variant-numeric:tabular-nums}
+.days .lunar{font-size:.82rem;color:var(--ink-soft)}
+.days .sp .n{color:var(--dan);font-weight:700}
+.regular{display:grid;gap:12px}
+.regular div{display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid var(--line);padding-block:8px}
+.regular span:last-child{color:var(--ink-soft);font-variant-numeric:tabular-nums}
+
+/* about & visit */
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px}
+@media (max-width:760px){.two{grid-template-columns:1fr}}
+.addr{font-family:var(--f-display);font-size:1.45rem;line-height:1.5}
+.copy{border:1px solid var(--line);background:transparent;border-radius:6px;padding:4px 10px;font:inherit;font-size:.8rem;cursor:pointer;color:var(--ink);margin-left:6px;vertical-align:middle}
+.maps{display:flex;flex-wrap:wrap;gap:10px;margin-block:18px}
+.dl{display:grid;gap:12px;margin:0}
+.dl div{display:grid;grid-template-columns:5em 1fr;gap:12px}
+.dl dt{font-weight:700}
+.dl dd{margin:0;color:var(--ink-soft);min-width:0}
+
+/* form */
+form{display:grid;gap:18px;max-width:640px}
+label{font-weight:700;display:grid;gap:6px;font-size:.95rem}
+label small{font-weight:400;color:var(--ink-soft)}
+input,select,textarea{font:inherit;font-size:1rem;padding:12px 14px;border-radius:8px;border:1.5px solid var(--line);background:var(--paper);color:var(--ink);width:100%}
+textarea{min-height:110px;resize:vertical}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:520px){.row2{grid-template-columns:1fr}}
+.radios{display:flex;flex-wrap:wrap;gap:8px}
+.radios label{font-weight:400;display:flex;align-items:center;gap:6px;border:1.5px solid var(--line);border-radius:8px;padding:8px 14px;cursor:pointer}
+.radios input{width:auto}
+.agree{display:flex;gap:10px;align-items:flex-start;font-weight:400;font-size:.9rem}
+.agree input{width:22px;height:22px;flex:none;margin-top:4px}
+.done{border:2px solid var(--pine);border-radius:10px;padding:20px;display:grid;gap:12px;background:var(--paper)}
+.done pre{white-space:pre-wrap;font-family:inherit;font-size:.92rem;margin:0;color:var(--ink-soft);background:var(--paper-2);padding:12px;border-radius:8px}
+
+footer{background:var(--ink);color:var(--paper);padding-block:46px;font-size:.88rem}
+footer .wrap{display:grid;gap:12px}
+footer p{opacity:.8}
+footer .disc{border-top:1px solid rgba(128,128,128,.4);padding-top:14px;opacity:.7;font-size:.82rem}
+
+/* fixed action bar */
+.dock{position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--paper);border-top:1px solid var(--line);padding:8px 10px calc(8px + env(safe-area-inset-bottom,0px));display:grid;grid-template-columns:1fr 1fr 1.3fr;gap:8px}
+.dock a{display:flex;align-items:center;justify-content:center;min-height:52px;border-radius:8px;text-decoration:none;font-weight:700;font-size:.95rem;border:1.5px solid var(--line);color:var(--ink)}
+.dock a.go{background:var(--pine);color:var(--on-pine);border-color:var(--pine)}
+@media (min-width:900px){.dock{left:auto;right:20px;bottom:20px;width:440px;border:1px solid var(--line);border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12)}body{padding-bottom:0}}
+
+.doors{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:20px}
+@media (max-width:760px){.doors{grid-template-columns:1fr}}
+.door{display:grid;gap:10px;align-content:start;text-decoration:none;color:var(--ink);background:var(--paper);border:1.5px solid var(--line);border-radius:12px;padding:26px;transition:border-color .2s,transform .2s}
+.door:hover{border-color:var(--pine);transform:translateY(-2px)}
+@media (prefers-reduced-motion:reduce){.door,.door:hover{transition:none;transform:none}}
+.door b{font-family:var(--f-display);font-weight:400;font-size:1.6rem}
+.door span{color:var(--ink-soft);font-size:.96rem}
+.door .door-k{font-size:.75rem;letter-spacing:.14em;font-weight:700;color:var(--gold)}
+.door .door-go{color:var(--pine);font-weight:700;margin-top:6px}
+.door-edu{grid-template-columns:minmax(0,150px) minmax(0,1fr);gap:20px;border:2px solid var(--pine)}
+.door-edu img{width:100%;height:auto;aspect-ratio:3/4;object-fit:cover;border-radius:8px}
+.door-txt{display:grid;gap:10px;align-content:start;min-width:0}
+@media (max-width:420px){.door-edu{grid-template-columns:1fr}.door-edu img{max-width:180px}}
+.halls{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:18px;grid-column:1/-1;margin-top:10px}
+.halls .hall{grid-column:span 2}.halls .hall.wide{grid-column:span 3}.halls .hall.wide img{aspect-ratio:16/9}
+@media (max-width:720px){.halls{grid-template-columns:1fr}.halls .hall,.halls .hall.wide{grid-column:auto}}
+.hall{display:grid;gap:8px;align-content:start;min-width:0}
+.hall img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;border-radius:10px;display:block}
+.hall b{font-family:var(--f-display);font-weight:400;font-size:1.25rem}
+.hall span{font-size:.9rem;color:var(--ink-soft)}
+.history{list-style:none;margin:0;padding:0}
+.history li{display:grid;grid-template-columns:4.2em 1fr;gap:12px;padding-block:10px;border-bottom:1px solid var(--line)}
+.history b{font-family:var(--f-display);font-weight:400;font-size:1.2rem;color:var(--gold);font-variant-numeric:tabular-nums}
 </style>
-</head>
-<body>
-<header><div class="wrap">
- <a class="logo" href="#top">彌勒寺</a>
- <nav><a href="#intro">사찰소개</a><a href="#halls">전각</a><a href="#events">법회</a><a href="#visit">오시는 길</a></nav>
-</div></header>
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="#top"><b>부여 미륵사</b><span>彌勒寺</span></a>
+    <nav aria-label="주요 메뉴">
+      <a href="#dharma">법회 일정</a>
+      <a href="#temple">미륵사 소개</a>
+      <a href="#support">기도·불사</a>
+      <a href="#visit">오시는 길</a>
+      <a href="edu.html">교육·진로진학센터 &rarr;</a>
+    </nav>
+    <button class="big-btn" id="bigBtn" type="button" aria-pressed="false">글자 크게</button>
+  </div>
+</header>
+<main id="top">
+  <div class="hero photo-hero">
+    <div class="wrap">
+      <div class="tag">충남 부여 홍산 정동리</div>
+      <h1>미래에 오실 부처님을 모신 절, 부여 미륵사</h1>
+      <p class="lead">비홍산 자락의 작은 절입니다. 매월 음력 초하루와 보름 오전 9시에 법회를 올리고, 해마다 산신제·칠석·미륵제를 엽니다.</p>
+      <p class="lead" id="nextDay" style="font-family:var(--f-display);font-size:1.2rem"></p>
+      <div class="cta-row">
+        <a class="btn btn-gold" href="#temple">미륵사 둘러보기</a>
+        <a class="btn btn-ghost" href="edu.html">교육·진로진학센터</a>
+      </div>
+    </div>
+    <svg class="ridge" viewBox="0 0 1200 170" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0 110 C120 70 220 60 330 92 S520 40 640 78 S860 30 990 74 S1130 64 1200 80 V170 H0Z" style="fill:var(--paper)" opacity=".18"/>
+      <path d="M0 132 C160 100 260 112 380 118 S600 84 720 108 S940 96 1060 118 S1160 110 1200 116 V170 H0Z" style="fill:var(--paper)" opacity=".35"/>
+      <path d="M0 150 C200 132 360 146 520 140 S820 128 980 142 S1140 140 1200 138 V170 H0Z" style="fill:var(--paper)"/>
+    </svg>
+  </div>
 
-<section class="hero" id="top"><div>
- <small>BUYEO MIREUKSA</small>
- <h1>부여 미륵사</h1>
- <p>미래의 부처님, 미륵존불의 자비가 머무는 도량</p>
-</div></section>
+  <section id="temple">
+    <div class="wrap two">
+      <div style="display:grid;gap:16px;min-width:0;align-content:start">
+        <div class="eyebrow">미륵사 소개</div>
+        <h2>비홍산(飛鴻山) 자락, 1996년부터 이어 온 기도</h2>
+        <p>부여 미륵사는 한민족불교 미륵종 사찰로, 충남 부여군 홍산면 정동리 비홍산 자락에 자리하고 있습니다. 미륵전과 앞마당의 미륵존불(彌勒尊佛) 입상에 미래에 오실 부처님을 모시고, 지역 신도들과 함께 기도해 왔으며, 이제 아이들과 부모가 미래를 준비하는 배움의 공간으로 문을 엽니다.</p>
+        <ul class="history">
+          <li><b>1996</b><span>음력 7월, 미륵존불을 모시고 절 운영 시작</span></li>
+          <li><b>1997</b><span>음력 7월 1일, 미륵사로 정식 출발</span></li>
+          <li><b>2008</b><span>미륵종각에 범종 조성</span></li>
+          <li><b>지금</b><span>주지 심명스님 · 종정 덕화스님</span></li>
+        </ul>
+      </div>
+      <figure class="fig" style="--ar:1/2;max-width:340px;justify-self:center"><img src="img/mireukjonbul.jpg" alt="연꽃 받침 위에 선 석조 미륵존불 입상, 받침돌에 彌勒尊佛 글씨" width="700" height="1360" loading="lazy"><figcaption>미륵존불(彌勒尊佛)</figcaption></figure>
+      <figure class="fig" style="--ar:16/9;grid-column:1/-1"><img src="img/courtyard.jpg" alt="미륵존불 입상과 단청 올린 미륵전, 감이 열린 앞마당" width="1400" height="805" loading="lazy"><figcaption>미륵전 앞마당. 미륵존불이 마당을 지키고, 가을이면 감나무에 감이 붉게 익습니다.</figcaption></figure>
+      <div class="halls" aria-label="경내 둘러보기">
+        <h3 style="grid-column:1/-1;margin-top:8px">경내 둘러보기</h3>
+        <div class="hall"><img src="img/mireukjeon.jpg" alt="단청 올린 미륵전 정면, 彌勒殿 현판" width="900" height="508" loading="lazy"><b>미륵전 <small style="font-size:.8rem;color:var(--ink-soft)">彌勒殿</small></b><span>미륵사의 중심 법당입니다.</span></div>
+        <div class="hall"><img src="img/jonggak.jpg" alt="彌勒鐘 현판이 걸린 단청 종각과 화강암 난간" width="900" height="675" loading="lazy"><b>미륵종각 <small style="font-size:.8rem;color:var(--ink-soft)">彌勒鐘</small></b><span>미륵종을 모신 종각입니다.</span></div>
+        <div class="hall"><img src="img/sansinjeon.jpg" alt="山神殿 현판이 걸린 산신전 정면과 돌계단" width="900" height="598" loading="lazy"><b>산신전 <small style="font-size:.8rem;color:var(--ink-soft)">山神殿</small></b><span>절 뒷산의 산신을 모신 전각입니다.</span></div>
+        <div class="hall wide"><img src="img/chokrugak.jpg" alt="燭淚閣 현판과 연꽃 벽화, 처마 너머로 보이는 미륵전" width="1000" height="563" loading="lazy"><b>촉루각 <small style="font-size:.8rem;color:var(--ink-soft)">燭淚閣</small></b><span>초를 공양하며 발원하는 곳입니다.</span></div>
+        <div class="hall wide"><img src="img/view.jpg" alt="처마 끝 풍경 사이로 미륵존불과 종각, 멀리 홍산 들녘과 산이 보인다" width="1000" height="563" loading="lazy"><b>앞마당 끝</b><span>마당 끝에 서면 홍산 들녘이 한눈에 들어옵니다.</span></div>
+      </div>
+    </div>
+  </section>
 
-<section class="intro" id="intro"><div class="wrap">
- <div class="title"><small>INTRODUCTION</small><h2>사찰 소개</h2></div>
- <p>미륵사는 충청남도 부여에 자리한 미륵 신앙 도량입니다.</p>
- <p>【 사찰의 창건 내력, 주지스님 인사말, 도량의 성격 등을 이곳에 적어 주세요. 】</p>
-</div></section>
+  <section class="alt" id="choose">
+    <div class="wrap">
+      <div class="head">
+        <div class="eyebrow">미륵사에서 할 수 있는 일</div>
+        <h2>어떤 일로 오셨나요</h2>
+      </div>
+      <div class="doors">
+        <a class="door" href="#dharma">
+          <span class="door-k">수행 · 기도</span>
+          <b>법회와 기도</b>
+          <span>초하루·보름 법회, 기도 접수, 불사 후원, 오시는 길을 안내합니다.</span>
+          <span class="door-go">법회 일정 보기 &darr;</span>
+        </a>
+        <a class="door door-edu" href="edu.html">
+          <img src="img/simmyeong.jpg" alt="합장하고 있는 심명스님" width="640" height="913">
+          <span class="door-txt">
+            <span class="door-k">교육 · 진로 · 진학</span>
+            <b>교육·진로진학센터</b>
+            <span>심명스님이 학생과 학부모의 진로·진학 고민을 함께 살핍니다. 전화·카톡·화상 상담은 전국에서 가능합니다.</span>
+            <span class="door-go">센터로 가기 &rarr;</span>
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
 
-<section class="alt" id="halls"><div class="wrap">
- <div class="title"><small>HALLS</small><h2>경내 전각</h2></div>
- <div class="halls">
-  <div class="card"><div class="ph" data-img="images/mireukjeon.jpg">미륵전</div><div class="txt"><h3>미륵전</h3><p>미륵존불을 모신 본전입니다.</p></div></div>
-  <div class="card"><div class="ph" data-img="images/mireukjonbul.jpg">미륵존불</div><div class="txt"><h3>미륵존불</h3><p>미래에 오실 부처님, 미륵존불입니다.</p></div></div>
-  <div class="card"><div class="ph" data-img="images/jonggak.jpg">미륵종각</div><div class="txt"><h3>미륵종각</h3><p>범종을 모신 종각입니다.</p></div></div>
-  <div class="card"><div class="ph" data-img="images/sansinjeon.jpg">산신전</div><div class="txt"><h3>산신전</h3><p>산신님을 모신 전각입니다.</p></div></div>
- </div>
-</div></section>
+  <section id="dharma">
+    <div class="wrap">
+      <div class="head">
+        <div class="eyebrow">수행 · 법회</div>
+        <h2>다가오는 법회</h2>
+        <p>법회는 오전 9시에 시작합니다. 음력 날짜에 맞춰 자동으로 계산된 일정입니다.</p>
+      </div>
+      <div class="sched">
+        <ul class="days" id="days"></ul>
+        <div class="regular">
+          <h3>정기 법회</h3>
+          <div><span>초하루 법회</span><span>매월 음력 1일 · 오전 9시</span></div>
+          <div><span>보름 법회</span><span>매월 음력 15일 · 오전 9시</span></div>
+          <h3 style="margin-top:18px">연간 행사</h3>
+          <div><span>산신제</span><span>음력 1월 10일 · 오후 1시</span></div>
+          <div><span>칠석</span><span>음력 7월 7일</span></div>
+          <div><span>미륵제</span><span>음력 10월 10일 · 오전 9시</span></div>
+          <p class="note">일정은 사찰 사정에 따라 바뀔 수 있으니 오시기 전 연락 주세요.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<section id="events"><div class="wrap">
- <div class="title"><small>DHARMA SERVICE</small><h2>법회 안내</h2></div>
- <table>
-  <tr><th>초하루 법회</th><td>매월 음력 1일 【 시간 】</td></tr>
-  <tr><th>보름 법회</th><td>매월 음력 15일 【 시간 】</td></tr>
-  <tr><th>지장재일</th><td>매월 음력 18일 【 시간 】</td></tr>
-  <tr><th>부처님오신날</th><td>음력 4월 8일 봉축법요식</td></tr>
-  <tr><th>기도·택일 상담</th><td>【 상담 가능 시간 / 예약 방법 】</td></tr>
- </table>
-</div></section>
+  <section class="alt" id="support">
+    <div class="wrap two">
+      <div style="display:grid;gap:14px;min-width:0">
+        <div class="eyebrow">함께하기</div>
+        <h2>불사 후원</h2>
+        <p>미륵사의 전각을 가꾸고 지역 아이들을 위한 무료 진로 특강과 학부모 설명회를 여는 데 쓰입니다. 후원하신 분께는 기도 축원을 올려 드립니다.</p>
+      </div>
+      <dl class="dl">
+        <div><dt>후원 계좌</dt><dd><span data-info="bank">농협 (서부여농협)</span><br><b id="acct" data-info="account" style="font-variant-numeric:tabular-nums">463131-52-099491</b><button class="copy" type="button" data-copy="acct">계좌 복사</button><br><small>예금주 <span data-info="holder">서지원 (미륵사)</span></small></dd></div>
+        <div><dt>기도 신청</dt><dd>이름과 연락처, 축원 내용을 카톡으로 보내 주세요.</dd></div>
+      </dl>
+      <figure class="fig" style="--ar:16/10;grid-column:1/-1"><img src="img/beopdang.jpg" alt="미륵전 법당 안, 금빛 불상들 위로 연등과 발원지가 걸려 있다" width="1400" height="875" loading="lazy"><figcaption>미륵전 법당. 연등과 발원지를 달아 가족의 무사와 소원 성취를 빕니다.</figcaption></figure>
+    </div>
+  </section>
 
-<section class="alt" id="visit"><div class="wrap">
- <div class="title"><small>LOCATION</small><h2>오시는 길</h2></div>
- <div class="visit">
-  <div class="map"><iframe loading="lazy" src="https://maps.google.com/maps?q=%EC%B6%A9%EB%82%A8%20%EB%B6%80%EC%97%AC%20%EB%AF%B8%EB%A5%B5%EC%82%AC&z=13&output=embed" title="지도"></iframe></div>
-  <dl>
-   <dt>주소</dt><dd>충청남도 부여군 【 상세 주소 】</dd>
-   <dt>전화</dt><dd>【 000-0000-0000 】</dd>
-   <dt>자가용</dt><dd>【 IC에서 오시는 길 】</dd>
-   <dt>대중교통</dt><dd>【 부여시외버스터미널에서 오시는 길 】</dd>
-  </dl>
- </div>
-</div></section>
-
-<footer><strong>부여 미륵사</strong><br>충청남도 부여군 【 주소 】 · 대표 서지원<br>© <span id="y"></span> Mireuksa. All rights reserved.</footer>
-
+  <section id="visit">
+    <div class="wrap two">
+      <div style="min-width:0">
+        <div class="eyebrow">오시는 길</div>
+        <p class="addr" style="margin-top:12px"><span id="addr">충남 부여군 홍산면 홍내로169번길 45</span><button class="copy" type="button" data-copy="addr">주소 복사</button></p>
+        <div class="maps">
+          <a class="btn btn-pine" href="https://map.naver.com/p/search/%EC%B6%A9%EB%82%A8%20%EB%B6%80%EC%97%AC%EA%B5%B0%20%ED%99%8D%EC%82%B0%EB%A9%B4%20%ED%99%8D%EB%82%B4%EB%A1%9C169%EB%B2%88%EA%B8%B8%2045" target="_blank" rel="noopener">네이버 지도</a>
+          <a class="btn btn-pine" href="https://map.kakao.com/?q=%EC%B6%A9%EB%82%A8%20%EB%B6%80%EC%97%AC%EA%B5%B0%20%ED%99%8D%EC%82%B0%EB%A9%B4%20%ED%99%8D%EB%82%B4%EB%A1%9C169%EB%B2%88%EA%B8%B8%2045" target="_blank" rel="noopener">카카오맵</a>
+        </div>
+      </div>
+      <dl class="dl">
+        <div><dt>자가용</dt><dd>내비게이션에 위 주소를 입력하세요. 정동리 마을길을 따라 올라오시면 됩니다.</dd></div>
+        <div><dt>대중교통</dt><dd>홍산버스터미널에서 약 4km입니다. 택시로 오시면 됩니다.</dd></div>
+        <div><dt>문의</dt><dd><span id="tel">041-836-7529</span><button class="copy" type="button" data-copy="tel">번호 복사</button></dd></div>
+      </dl>
+      <div class="visit-photos" style="grid-column:1/-1"><figure class="fig" style="--ar:2/1"><img src="img/parking.jpg" alt="절 아래 주차장, 왼쪽 돌계단 위로 미륵존불이 보인다" width="1000" height="674" loading="lazy"><figcaption>차는 절 아래 주차장에 대 주세요.</figcaption></figure><figure class="fig" style="--ar:2/1"><img src="img/entrance.jpg" alt="마을길에서 본 미륵사 입구, 연등과 철쭉, 미륵사 표지석" width="1000" height="563" loading="lazy"><figcaption>마을길에서 보이는 입구. 오른쪽에 미륵사 표지석이 있습니다.</figcaption></figure></div>
+    </div>
+  </section>
+</main>
+<footer>
+  <div class="wrap">
+    <b style="font-family:var(--f-display);font-weight:400;font-size:1.3rem">부여 미륵사</b>
+    <p>한민족불교 미륵종 · 충남 부여군 홍산면 홍내로169번길 45 (정동리 510) · 전화 041-836-7529</p>
+    <p class="disc">교육·진로진학 상담은 와이튜브가 운영합니다.</p>
+  </div>
+</footer>
+<div class="dock" role="navigation" aria-label="빠른 메뉴">
+  <a href="#dharma">법회 일정</a>
+  <a href="#visit">길찾기</a>
+  <a class="go" href="edu.html">진로 상담</a>
+</div>
+<script src="info.js"></script>
 <script>
-document.getElementById('y').textContent=new Date().getFullYear();
-document.querySelectorAll('.ph[data-img]').forEach(function(el){
- var img=new Image();img.alt=el.textContent;
- img.onload=function(){el.textContent='';el.appendChild(img)};
- img.src=el.dataset.img;
-});
+(function(){
+  try{var I=window.MIREUKSA_INFO||{};document.querySelectorAll("[data-info]").forEach(function(el){var v=I[el.dataset.info];if(v)el.textContent=v;});}catch(e){}
+  // 글자 크게
+  var root=document.documentElement,b=document.getElementById('bigBtn');
+  function setBig(on){root.classList.toggle('big',on);b.setAttribute('aria-pressed',on);b.textContent=on?'글자 보통':'글자 크게';try{localStorage.setItem('big',on?'1':'')}catch(e){}}
+  try{if(localStorage.getItem('big'))setBig(true)}catch(e){}
+  b.addEventListener('click',function(){setBig(!root.classList.contains('big'))});
+
+  // 법회 일정 (음력 환산, 2026.10~2027.09)
+  var R={1:'초하루 법회',15:'보름 법회'};
+  var SP={'1-10':'산신제','7-7':'칠석','10-10':'미륵제'};
+  var TM={'1-10':'오후 1시','7-7':'','10-10':'오전 9시'};
+  var raw=[["2026-11-09",10,1],["2026-11-18",10,10],["2026-11-23",10,15],["2026-12-09",11,1],["2026-12-23",11,15],["2027-01-08",12,1],["2027-01-22",12,15],["2027-02-07",1,1],["2027-02-16",1,10],["2027-02-21",1,15],["2027-03-08",2,1],["2027-03-22",2,15],["2027-04-07",3,1],["2027-04-21",3,15],["2027-05-06",4,1],["2027-05-20",4,15],["2027-06-05",5,1],["2027-06-19",5,15],["2027-07-04",6,1],["2027-07-18",6,15],["2027-08-02",7,1],["2027-08-08",7,7],["2027-08-16",7,15],["2027-09-01",8,1],["2027-09-15",8,15],["2027-09-30",9,1],["2027-10-14",9,15],["2027-10-29",10,1],["2027-11-07",10,10],["2027-11-12",10,15],["2027-11-28",11,1],["2027-12-12",11,15],["2027-12-28",12,1]];
+  var wd='일월화수목금토',now=new Date(),t=new Date(now.getFullYear(),now.getMonth(),now.getDate());
+  var ul=document.getElementById('days'),n=0;if(ul){
+  raw.forEach(function(r){
+    if(n>=7)return;var p=r[0].split('-'),d=new Date(+p[0],p[1]-1,+p[2]);if(d<t)return;
+    var k=r[1]+'-'+r[2],sp=SP[k],name=sp||R[r[2]];if(!name)return;var tm=sp?TM[k]:'오전 9시';
+    var li=document.createElement('li');if(sp)li.className='sp';li.dataset.tm=tm;
+    li.innerHTML='<span class="d">'+(+p[1])+'.'+(+p[2])+' ('+wd[d.getDay()]+')</span><span class="n">'+name+'</span><span class="lunar">음 '+r[1]+'.'+r[2]+'</span>';
+    ul.appendChild(li);n++;
+  });
+  var nx=ul.querySelector('li');var nd=document.getElementById('nextDay');if(nd&&nx&&n)nd.textContent='다음 법회 · '+nx.querySelector('.d').textContent+(nx.dataset.tm?' '+nx.dataset.tm:'')+' '+nx.querySelector('.n').textContent;
+  if(!n)ul.innerHTML='<li>새 일정을 준비하고 있습니다.</li>';}
+
+  // 복사
+  function copy(text,btn){var orig=btn.textContent;function ok(){btn.textContent='복사됨';setTimeout(function(){btn.textContent=orig},1600)}
+    try{navigator.clipboard.writeText(text).then(ok,function(){sel()})}catch(e){sel()}
+    function sel(){var el=document.getElementById(btn.dataset.copy||'msg');var r=document.createRange();r.selectNodeContents(el);var s=getSelection();s.removeAllRanges();s.addRange(r);btn.textContent='길게 눌러 복사하세요'}}
+  document.querySelectorAll('.copy').forEach(function(btn){btn.addEventListener('click',function(){copy(document.getElementById(btn.dataset.copy).textContent,btn)})});
+
+  // 신청
+  var f=document.getElementById('form');if(!f)return;var err=document.getElementById('err');
+  f.addEventListener('submit',function(e){
+    e.preventDefault();
+    var E=f.elements,name=E['name'].value.trim(),phone=E['phone'].value.trim();
+    if(!name||!phone){err.textContent='성함과 연락처를 적어 주세요.';err.hidden=false;return}
+    if(!document.getElementById('f-agree').checked){err.textContent='개인정보 수집에 동의해 주셔야 연락드릴 수 있습니다.';err.hidden=false;return}
+    err.hidden=true;
+    var m='[미륵사 상담 신청]\n성함: '+name+'\n연락처: '+phone+'\n자녀 학년: '+E['grade'].value+'\n상담 종류: '+E['type'].value+'\n희망 방식: '+E['how'].value+'\n고민: '+(E['memo'].value.trim()||'-');
+    document.getElementById('msg').textContent=m;
+    document.getElementById('done').hidden=false;f.hidden=true;
+    document.getElementById('done').scrollIntoView({block:'start'});
+  });
+  var cm=document.getElementById('copyMsg');cm.addEventListener('click',function(){copy(document.getElementById('msg').textContent,cm)});
+})();
 </script>
-</body>
-</html>
+
+</body></html>

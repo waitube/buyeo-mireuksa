@@ -1,0 +1,418 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>미륵사 교육·진로진학센터</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Song+Myung&family=IBM+Plex+Sans+KR:wght@400;500;700&display=swap">
+<style>
+/* Layout: 산사 능선 히어로 → 상담 동선(문제→과정→비용→신청) → 사찰(법회·소개·오시는 길) → 하단 고정 행동 바 */
+:root{
+  --paper:#f4f5f0;        /* 한지 바탕, 솔잎 쪽으로 살짝 */
+  --paper-2:#e8ebe2;
+  --ink:#1c2b28;          /* 먹 */
+  --ink-soft:#4a5a55;
+  --pine:#1d4a42;         /* 솔빛 녹청 */
+  --gold:#a77d2c;         /* 개금 금빛 */
+  --dan:#a5432f;          /* 단청 주홍, 아주 적게 */
+  --line:#cfd5c8;
+  --on-pine:#f4f5f0;
+  --todo:#a5432f;
+  --f-display:"Song Myung","Nanum Myeongjo",serif;
+  --f-body:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --fs:18px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#121a18;--paper-2:#1a2421;--ink:#e6e9e1;--ink-soft:#a9b5ad;--pine:#2f6a5f;--gold:#d2a957;--dan:#d9725c;--line:#2c3a36;--on-pine:#f4f5f0;--todo:#e08a73;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#121a18;--paper-2:#1a2421;--ink:#e6e9e1;--ink-soft:#a9b5ad;--pine:#2f6a5f;--gold:#d2a957;--dan:#d9725c;--line:#2c3a36;--on-pine:#f4f5f0;--todo:#e08a73;color-scheme:dark}
+:root.big{--fs:21px}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:var(--fs);line-height:1.75;word-break:keep-all;padding-bottom:84px}
+a{color:var(--pine)}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.wrap{max-width:1040px;margin:0 auto;padding-inline:20px}
+h1,h2,h3{font-family:var(--f-display);font-weight:400;text-wrap:balance;line-height:1.3;margin:0}
+h2{font-size:clamp(1.7rem,4.5vw,2.4rem)}
+h3{font-size:1.3rem}
+p{margin:0}
+.eyebrow{font-size:.78rem;letter-spacing:.14em;color:var(--gold);font-weight:700}
+.todo{color:var(--todo);border:1.5px dashed var(--todo);border-radius:6px;padding:2px 8px;font-size:.85em;display:inline-block}
+
+/* header */
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--paper);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;gap:16px;min-height:64px}
+.brand{display:flex;align-items:baseline;gap:10px;text-decoration:none;color:var(--ink)}
+.brand b{font-family:var(--f-display);font-weight:400;font-size:1.5rem}
+.brand span{font-size:.75rem;color:var(--ink-soft)}
+nav{margin-left:auto;display:flex;gap:4px;flex-wrap:wrap}
+nav a{text-decoration:none;color:var(--ink);padding:8px 10px;border-radius:6px;font-size:.92rem}
+nav a:hover{background:var(--paper-2)}
+.big-btn{border:1px solid var(--line);background:transparent;color:var(--ink);border-radius:6px;padding:6px 10px;font:inherit;font-size:.85rem;cursor:pointer}
+@media (max-width:820px){nav{display:none}.bar{justify-content:space-between}}
+
+/* hero */
+.hero{position:relative;overflow:hidden;background:var(--pine);color:var(--on-pine)}
+.hero .wrap{position:relative;z-index:1;padding-block:72px 150px;display:grid;gap:22px}
+.hero h1{font-size:clamp(2.1rem,6.5vw,3.8rem);max-width:15em}
+.hero p.lead{max-width:30em;font-size:1.08rem;opacity:.92}
+.hero .tag{font-family:var(--f-display);font-size:1.1rem;color:var(--gold)}
+:root[data-theme="dark"] .hero .tag{color:#e2bd6d}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:6px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:54px;padding:0 24px;border-radius:8px;font-weight:700;text-decoration:none;font-size:1rem;border:2px solid transparent;cursor:pointer;font-family:inherit}
+.btn-gold{background:var(--gold);color:#1b1407}
+.btn-ghost{border-color:rgba(244,245,240,.55);color:var(--on-pine);background:transparent}
+.btn-pine{background:var(--pine);color:var(--on-pine)}
+.ridge{position:absolute;inset:auto 0 0 0;width:100%;height:170px;display:block}
+
+/* sections */
+section{padding-block:76px}
+section.alt{background:var(--paper-2)}
+.head{display:grid;gap:10px;margin-bottom:34px;max-width:40em}
+.head p{color:var(--ink-soft)}
+
+.worries{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}
+.worry{border-top:2px solid var(--pine);padding-top:14px}
+.worry q{font-family:var(--f-display);font-size:1.22rem;quotes:"“" "”";display:block;margin-bottom:8px}
+.worry p{color:var(--ink-soft);font-size:.95rem}
+
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:26px;counter-reset:s}
+.step{counter-increment:s;display:grid;gap:8px}
+.step::before{content:"STEP " counter(s);font-size:.75rem;letter-spacing:.14em;font-weight:700;color:var(--gold)}
+.step p{color:var(--ink-soft);font-size:.96rem}
+
+.plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.plan{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:26px;display:grid;gap:12px;align-content:start}
+.plan.main{border:2px solid var(--pine)}
+.price{font-family:var(--f-display);font-size:2rem;font-variant-numeric:tabular-nums}
+.price small{font-family:var(--f-body);font-size:.85rem;color:var(--ink-soft)}
+.plan ul{margin:0;padding-left:1.1em;color:var(--ink-soft);font-size:.95rem}
+.ways{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.chip{border:1px solid var(--line);border-radius:999px;padding:4px 14px;font-size:.88rem;background:var(--paper)}
+
+.monk{display:grid;grid-template-columns:minmax(0,260px) minmax(0,1fr);gap:40px;align-items:start}
+@media (max-width:720px){.monk{grid-template-columns:1fr}}
+.portrait{aspect-ratio:3/4;max-width:100%;border:1.5px dashed var(--line);border-radius:10px;display:grid;place-items:center;text-align:center;padding:16px;color:var(--ink-soft);font-size:.9rem;background:var(--paper-2)}
+.photo{width:100%;height:auto;aspect-ratio:640/913;object-fit:cover;border-radius:10px;display:block}
+.monk .body{display:grid;gap:16px;min-width:0}
+.creds{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:6px 22px;font-size:.93rem;color:var(--ink-soft);padding:0;margin:0;list-style:none}
+.creds li{border-bottom:1px solid var(--line);padding-block:6px}
+
+.cases{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}
+.case{background:var(--paper);border-radius:10px;padding:22px;display:grid;gap:10px;align-content:start;border:1px solid var(--line)}
+.case .from{font-size:.85rem;color:var(--ink-soft)}
+.case .to{font-family:var(--f-display);font-size:1.35rem;color:var(--pine)}
+:root[data-theme="dark"] .case .to{color:#7fc0b2}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .case .to{color:#7fc0b2}}
+.case p{font-size:.92rem;color:var(--ink-soft)}
+.note{font-size:.82rem;color:var(--ink-soft);margin-top:16px}
+
+/* schedule */
+.sched{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px}
+@media (max-width:760px){.sched{grid-template-columns:1fr}}
+.days{list-style:none;margin:0;padding:0}
+.days li{display:grid;grid-template-columns:5.4em 1fr auto;gap:12px;align-items:baseline;padding-block:12px;border-bottom:1px solid var(--line)}
+.days .d{font-family:var(--f-display);font-size:1.25rem;font-variant-numeric:tabular-nums}
+.days .lunar{font-size:.82rem;color:var(--ink-soft)}
+.days .sp .n{color:var(--dan);font-weight:700}
+.regular{display:grid;gap:12px}
+.regular div{display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid var(--line);padding-block:8px}
+.regular span:last-child{color:var(--ink-soft);font-variant-numeric:tabular-nums}
+
+/* about & visit */
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px}
+@media (max-width:760px){.two{grid-template-columns:1fr}}
+.addr{font-family:var(--f-display);font-size:1.45rem;line-height:1.5}
+.copy{border:1px solid var(--line);background:transparent;border-radius:6px;padding:4px 10px;font:inherit;font-size:.8rem;cursor:pointer;color:var(--ink);margin-left:6px;vertical-align:middle}
+.maps{display:flex;flex-wrap:wrap;gap:10px;margin-block:18px}
+.dl{display:grid;gap:12px;margin:0}
+.dl div{display:grid;grid-template-columns:5em 1fr;gap:12px}
+.dl dt{font-weight:700}
+.dl dd{margin:0;color:var(--ink-soft);min-width:0}
+
+/* form */
+form{display:grid;gap:18px;max-width:640px}
+label{font-weight:700;display:grid;gap:6px;font-size:.95rem}
+label small{font-weight:400;color:var(--ink-soft)}
+input,select,textarea{font:inherit;font-size:1rem;padding:12px 14px;border-radius:8px;border:1.5px solid var(--line);background:var(--paper);color:var(--ink);width:100%}
+textarea{min-height:110px;resize:vertical}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:520px){.row2{grid-template-columns:1fr}}
+.radios{display:flex;flex-wrap:wrap;gap:8px}
+.radios label{font-weight:400;display:flex;align-items:center;gap:6px;border:1.5px solid var(--line);border-radius:8px;padding:8px 14px;cursor:pointer}
+.radios input{width:auto}
+.agree{display:flex;gap:10px;align-items:flex-start;font-weight:400;font-size:.9rem}
+.agree input{width:22px;height:22px;flex:none;margin-top:4px}
+.done{border:2px solid var(--pine);border-radius:10px;padding:20px;display:grid;gap:12px;background:var(--paper)}
+.done pre{white-space:pre-wrap;font-family:inherit;font-size:.92rem;margin:0;color:var(--ink-soft);background:var(--paper-2);padding:12px;border-radius:8px}
+
+footer{background:var(--ink);color:var(--paper);padding-block:46px;font-size:.88rem}
+footer .wrap{display:grid;gap:12px}
+footer p{opacity:.8}
+footer .disc{border-top:1px solid rgba(128,128,128,.4);padding-top:14px;opacity:.7;font-size:.82rem}
+
+/* fixed action bar */
+.dock{position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--paper);border-top:1px solid var(--line);padding:8px 10px calc(8px + env(safe-area-inset-bottom,0px));display:grid;grid-template-columns:1fr 1fr 1.3fr;gap:8px}
+.dock a{display:flex;align-items:center;justify-content:center;min-height:52px;border-radius:8px;text-decoration:none;font-weight:700;font-size:.95rem;border:1.5px solid var(--line);color:var(--ink)}
+.dock a.go{background:var(--pine);color:var(--on-pine);border-color:var(--pine)}
+@media (min-width:900px){.dock{left:auto;right:20px;bottom:20px;width:440px;border:1px solid var(--line);border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12)}body{padding-bottom:0}}
+.fig{margin:0;display:grid;gap:8px;min-width:0}
+.fig img{width:100%;height:auto;border-radius:10px;display:block;aspect-ratio:var(--ar,16/9);object-fit:cover}
+.fig figcaption{font-size:.85rem;color:var(--ink-soft)}
+.visit-photos{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+@media (max-width:520px){.visit-photos{grid-template-columns:1fr}}
+</style>
+<style>:root{padding-top:env(safe-area-inset-top,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style></head><body>
+
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="#top"><b>부여 미륵사</b><span>교육·진로진학센터</span></a>
+    <nav aria-label="주요 메뉴">
+      <a href="#consult">상담 안내</a>
+      <a href="#monk">심명스님</a>
+      <a href="#cases">상담 사례</a>
+      <a href="#apply">상담 신청</a>
+      <a href="#visit">오시는 길</a>
+      <a href="./">부여 미륵사 &rarr;</a>
+    </nav>
+    <button class="big-btn" id="bigBtn" type="button" aria-pressed="false">글자 크게</button>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap">
+      <div class="tag">전통을 이어, 미래를 준비하는 곳</div>
+      <h1>아이의 길을 묻기 전에, 부모 마음부터 편안해지는 곳</h1>
+      <p class="lead">부여 홍산 미륵사에서 30년 진로·진학 지도 경력의 심명스님이 아이의 성향을 먼저 살피고, 성적표보다 앞서 갈 길을 함께 그립니다. 전화·카톡·화상으로 전국 어디서나 상담할 수 있습니다.</p>
+      <div class="cta-row">
+        <a class="btn btn-gold" href="#apply">상담 신청하기</a>
+        <a class="btn btn-ghost" href="#consult">상담 안내 보기</a>
+      </div>
+    </div>
+    <svg class="ridge" viewBox="0 0 1200 170" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0 110 C120 70 220 60 330 92 S520 40 640 78 S860 30 990 74 S1130 64 1200 80 V170 H0Z" style="fill:var(--paper)" opacity=".18"/>
+      <path d="M0 132 C160 100 260 112 380 118 S600 84 720 108 S940 96 1060 118 S1160 110 1200 116 V170 H0Z" style="fill:var(--paper)" opacity=".35"/>
+      <g style="fill:var(--paper)" opacity=".55">
+        <path d="M842 104 L878 90 L914 104 L906 104 L906 118 L850 118 L850 104Z"/>
+        <path d="M832 106 Q878 84 924 106 L920 108 Q878 92 836 108Z"/>
+      </g>
+      <path d="M0 150 C200 132 360 146 520 140 S820 128 980 142 S1140 140 1200 138 V170 H0Z" style="fill:var(--paper)"/>
+    </svg>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <div class="head">
+        <div class="eyebrow">이런 분께</div>
+        <h2>성적표를 보면 막막하고, 누구에게 물어야 할지 모르겠다면</h2>
+      </div>
+      <div class="worries">
+        <div class="worry"><q>내신이 불리한데, 우리 아이는 어디까지 갈 수 있을까요?</q><p>등급만 보고 포기하기 전에, 아이의 적성에서 거꾸로 길을 찾습니다.</p></div>
+        <div class="worry"><q>꿈이 없다는 아이, 무엇부터 시작해야 할까요?</q><p>성향·흥미·강점을 먼저 살펴 아이가 납득하는 방향을 함께 찾습니다.</p></div>
+        <div class="worry"><q>고등학교 선택, 과목 선택, 지금 결정이 맞는지 불안해요.</q><p>고교학점제와 2028 대입 변화에 맞춰 학년별 로드맵을 드립니다.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt" id="consult">
+    <div class="wrap">
+      <div class="head">
+        <div class="eyebrow">상담 안내</div>
+        <h2>진단, 상담, 로드맵의 세 단계로 진행합니다</h2>
+        <p>상담은 한 번에 끝나지 않도록, 아이의 현재에서 대학과 진로까지 이어지는 길을 문서로 남겨 드립니다.</p>
+      </div>
+      <div class="steps">
+        <div class="step"><h3>진단</h3><p>성향·흥미·학습 특성을 살핍니다. 진로검사와 MBTI, 명리 해석을 참고 도구로 함께 씁니다.</p></div>
+        <div class="step"><h3>상담</h3><p>학생과 학부모를 함께 만나 고민을 듣고, 학교생활과 성적 자료를 같이 봅니다.</p></div>
+        <div class="step"><h3>로드맵</h3><p>현재 → 1년 → 3년 → 대학·진로 순서로 무엇을 할지 정리해 드립니다.</p></div>
+      </div>
+
+      <div class="plans" style="margin-top:46px">
+        <div class="plan">
+          <h3>일반 상담</h3>
+          <div class="price">10만원 <small>/ 1회</small></div>
+          <ul><li>마음·가정·학습 고민 상담</li><li>아이 성향 이해와 부모 대화법</li></ul>
+        </div>
+        <div class="plan main">
+          <h3>교육 상담 <small style="font-family:var(--f-body);font-size:.8rem;color:var(--ink-soft)">진로·진학</small></h3>
+          <div class="price">30만원 <small>/ 1회</small></div>
+          <ul><li>초·중·고 학년별 진로 탐색</li><li>고교 선택, 과목 선택, 학생부 방향</li><li>수시·정시 전략과 대학·학과 선택</li></ul>
+        </div>
+      </div>
+      <div class="ways"><span class="chip">전화 상담</span><span class="chip">카톡 상담</span><span class="chip">화상 상담</span><span class="chip">미륵사 상담실 대면</span><span class="chip">전국 가능</span></div>
+      <p class="note">처음이시라면 카톡으로 학년·학교유형·내신·희망계열 네 가지만 보내 주세요. 무료로 짧은 진단을 먼저 드립니다.</p>
+    </div>
+  </section>
+
+  <section id="monk">
+    <div class="wrap monk">
+      <img class="photo" src="img/simmyeong.jpg" alt="합장하고 있는 심명스님, 뒤로 겹벚꽃과 전각이 보인다" width="640" height="913">
+      <div class="body">
+        <div class="eyebrow">상담하시는 분</div>
+        <h2>심명스님</h2>
+        <p>1994년 수학 지도로 시작해 30년 동안 학생들의 공부와 진로·진학을 함께해 왔습니다. 명리학을 공부하고 출가한 뒤로는 아이의 타고난 성향을 먼저 보고, 그 위에 직업과 전공, 대학을 거꾸로 설계하는 방식으로 상담합니다.</p>
+        <p>"꿈부터 정하고 전공과 대학을 고르면, 성적이 부족해도 길은 있습니다."</p>
+        <ul class="creds">
+          <li>진로·진학 지도 30년</li>
+          <li>명리학 석·박사과정 이수 및 학위</li>
+          <li>도첩증 (2007)</li>
+          <li>진로검사·MBTI 정식 자격</li>
+          <li>사회복지사 1급</li>
+          <li>인성지도사·자기주도학습지도사 1급</li>
+          <li>와이튜브 진로진학 컨설팅 대표</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt" id="cases">
+    <div class="wrap">
+      <div class="head">
+        <div class="eyebrow">상담 사례</div>
+        <h2>성적이 아니라 적성에서 출발한 결과</h2>
+      </div>
+      <div class="cases">
+        <div class="case"><div class="from">외고 · 내신 3점대</div><div class="to">한의예과 합격</div><p>영어교사를 꿈꾸던 학생이 검사로 이과 적성을 확인하고, 고1부터 월 1회 학생부를 함께 설계했습니다.</p></div>
+        <div class="case"><div class="from">일반고 · 6.5등급</div><div class="to">4년제 간호학과 합격</div><p>꿈도 의욕도 없던 학생이 보건의료 적성을 찾은 뒤 고3 내신을 3.2까지 끌어올렸습니다.</p></div>
+        <div class="case"><div class="from">일반고 · 고1 8등급</div><div class="to">군사학과 진학</div><p>장교의 꿈에 맞춰 생기부·체력·면접을 3년 계획으로 준비해 6.0등급까지 올렸습니다.</p></div>
+        <div class="case"><div class="from">지방캠퍼스 3학년</div><div class="to">본교 편입 (2026)</div><p>진로 목표를 다시 세우고 편입 준비를 함께했습니다.</p></div>
+      </div>
+      <p class="note">학생 보호를 위해 이름과 학교, 대학명은 밝히지 않습니다. 결과는 학생마다 다르며 합격을 보장하지 않습니다.</p>
+    </div>
+  </section>
+
+
+
+  <section id="visit">
+    <div class="wrap two">
+      <div style="min-width:0">
+        <div class="eyebrow">오시는 길</div>
+        <p style="margin-top:8px;color:var(--ink-soft)">대면 상담은 미륵사 상담실에서 합니다.</p><p class="addr" style="margin-top:8px"><span id="addr">충남 부여군 홍산면 홍내로169번길 45</span><button class="copy" type="button" data-copy="addr">주소 복사</button></p>
+        <div class="maps">
+          <a class="btn btn-pine" href="https://map.naver.com/p/search/%EC%B6%A9%EB%82%A8%20%EB%B6%80%EC%97%AC%EA%B5%B0%20%ED%99%8D%EC%82%B0%EB%A9%B4%20%ED%99%8D%EB%82%B4%EB%A1%9C169%EB%B2%88%EA%B8%B8%2045" target="_blank" rel="noopener">네이버 지도</a>
+          <a class="btn btn-pine" href="https://map.kakao.com/?q=%EC%B6%A9%EB%82%A8%20%EB%B6%80%EC%97%AC%EA%B5%B0%20%ED%99%8D%EC%82%B0%EB%A9%B4%20%ED%99%8D%EB%82%B4%EB%A1%9C169%EB%B2%88%EA%B8%B8%2045" target="_blank" rel="noopener">카카오맵</a>
+        </div>
+      </div>
+      <dl class="dl">
+        <div><dt>자가용</dt><dd>내비게이션에 위 주소를 입력하세요. 정동리 마을길을 따라 올라오시면 됩니다. 절 아래 주차장에 차를 대고 왼쪽 돌계단으로 올라오세요.</dd></div>
+        <div><dt>대중교통</dt><dd>홍산버스터미널에서 약 4km입니다. 택시로 오시면 됩니다.</dd></div>
+        <div><dt>문의</dt><dd>심명스님 <span id="tel">010-8670-7529</span><button class="copy" type="button" data-copy="tel">번호 복사</button> · 카카오톡 채널 @waitube</dd></div>
+      </dl>
+      <div class="visit-photos" style="grid-column:1/-1"><figure class="fig" style="--ar:1/1"><img src="img/office.jpg" alt="책상과 책장, 자격증 액자가 있는 미륵사 상담실" width="900" height="848" loading="lazy"><figcaption>미륵사 상담실. 스님과 마주 앉아 상담합니다.</figcaption></figure><figure class="fig" style="--ar:1/1"><img src="img/room.jpg" alt="창밖으로 앞마당과 들녘이 보이는 좌식 방, 둥근 탁자와 좌식 의자" width="900" height="807" loading="lazy"><figcaption>창밖으로 앞마당과 홍산 들녘이 보이는 방입니다.</figcaption></figure></div>
+    </div>
+  </section>
+
+
+  <section id="apply">
+    <div class="wrap">
+      <div class="head">
+        <div class="eyebrow">상담 신청</div>
+        <h2>다섯 칸만 적어 주세요</h2>
+        <p>회원가입은 필요 없습니다. 작성하신 내용을 카톡 채널로 보내 주시면 순서대로 연락드립니다.</p>
+      </div>
+      <form id="form" novalidate>
+        <div class="row2">
+          <label for="f-name">보호자 성함<input id="f-name" name="name" autocomplete="name" required></label>
+          <label for="f-phone">연락처<input id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="010-0000-0000" required></label>
+        </div>
+        <label for="f-grade">자녀 학년
+          <select id="f-grade" name="grade">
+            <option>초등학생</option><option>중1</option><option>중2</option><option>중3</option><option>고1</option><option selected>고2</option><option>고3·N수</option><option>대학생·편입</option>
+          </select>
+        </label>
+        <fieldset style="border:0;padding:0;margin:0;display:grid;gap:8px">
+          <legend style="font-weight:700;font-size:.95rem;margin-bottom:6px">상담 종류</legend>
+          <div class="radios">
+            <label><input type="radio" name="type" id="t1" value="교육 상담 (30만원)" checked>교육 상담</label>
+            <label><input type="radio" name="type" id="t2" value="일반 상담 (10만원)">일반 상담</label>
+            <label><input type="radio" name="type" id="t3" value="무료 짧은 진단">무료 진단 먼저</label>
+          </div>
+        </fieldset>
+        <fieldset style="border:0;padding:0;margin:0;display:grid;gap:8px">
+          <legend style="font-weight:700;font-size:.95rem;margin-bottom:6px">희망 방식</legend>
+          <div class="radios">
+            <label><input type="radio" name="how" id="h1" value="전화" checked>전화</label>
+            <label><input type="radio" name="how" id="h2" value="카톡">카톡</label>
+            <label><input type="radio" name="how" id="h3" value="화상">화상</label>
+            <label><input type="radio" name="how" id="h4" value="미륵사 방문">미륵사 방문</label>
+          </div>
+        </fieldset>
+        <label for="f-memo">고민 한 줄 <small>(예: 내신 4등급인데 간호학과가 가능할까요?)</small><textarea id="f-memo" name="memo"></textarea></label>
+        <label class="agree" for="f-agree"><input type="checkbox" id="f-agree" required><span>상담 연락을 위해 성함·연락처·학년을 수집하며, 상담이 끝나면 파기하는 데 동의합니다.</span></label>
+        <p id="err" role="alert" style="color:var(--dan);font-size:.9rem" hidden></p>
+        <button class="btn btn-pine" type="submit">신청 내용 만들기</button>
+      </form>
+      <div class="done" id="done" hidden>
+        <h3>거의 다 됐습니다</h3>
+        <p>아래 내용을 복사해 카톡 채널 대화창에 붙여 넣어 주세요.</p>
+        <pre id="msg"></pre>
+        <div class="cta-row">
+          <button class="btn btn-pine" type="button" id="copyMsg">내용 복사</button>
+          <a class="btn btn-gold" href="https://pf.kakao.com/_ixfBXn/chat" target="_blank" rel="noopener">카톡 채널 열기</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <b style="font-family:var(--f-display);font-weight:400;font-size:1.3rem">부여 미륵사 · 교육·진로진학센터</b>
+    <p>충남 부여군 홍산면 홍내로169번길 45 · 상담 카카오톡 채널 @waitube · 진로진학 컨설팅 운영 와이튜브</p>
+    <p class="disc">사주·MBTI·진로검사는 아이를 이해하기 위한 참고 도구이며, 특정 결과나 합격을 보장하지 않습니다.</p>
+  </div>
+</footer>
+
+<div class="dock" role="navigation" aria-label="빠른 메뉴">
+  <a href="https://pf.kakao.com/_ixfBXn/chat" target="_blank" rel="noopener">카톡 문의</a>
+  <a href="#visit">길찾기</a>
+  <a class="go" href="#apply">상담 신청</a>
+</div>
+
+<script>
+(function(){
+  // 글자 크게
+  var root=document.documentElement,b=document.getElementById('bigBtn');
+  function setBig(on){root.classList.toggle('big',on);b.setAttribute('aria-pressed',on);b.textContent=on?'글자 보통':'글자 크게';try{localStorage.setItem('big',on?'1':'')}catch(e){}}
+  try{if(localStorage.getItem('big'))setBig(true)}catch(e){}
+  b.addEventListener('click',function(){setBig(!root.classList.contains('big'))});
+
+  // 법회 일정 (음력 환산, 2026.10~2027.09)
+  var R={1:'초하루 법회',15:'보름 법회',18:'지장재일',24:'관음재일'};
+  var SP={'12-8':'성도재일','1-15':'정월대보름','4-8':'부처님오신날','7-15':'백중 (우란분절)'};
+  var raw=[["2026-10-11",9,1],["2026-10-25",9,15],["2026-10-28",9,18],["2026-11-03",9,24],["2026-11-09",10,1],["2026-11-23",10,15],["2026-11-26",10,18],["2026-12-02",10,24],["2026-12-09",11,1],["2026-12-23",11,15],["2026-12-26",11,18],["2027-01-01",11,24],["2027-01-08",12,1],["2027-01-15",12,8],["2027-01-22",12,15],["2027-01-25",12,18],["2027-01-31",12,24],["2027-02-07",1,1],["2027-02-21",1,15],["2027-02-24",1,18],["2027-03-02",1,24],["2027-03-08",2,1],["2027-03-22",2,15],["2027-03-25",2,18],["2027-03-31",2,24],["2027-04-07",3,1],["2027-04-21",3,15],["2027-04-24",3,18],["2027-04-30",3,24],["2027-05-06",4,1],["2027-05-13",4,8],["2027-05-20",4,15],["2027-05-23",4,18],["2027-05-29",4,24],["2027-06-05",5,1],["2027-06-19",5,15],["2027-06-22",5,18],["2027-06-28",5,24],["2027-07-04",6,1],["2027-07-18",6,15],["2027-07-21",6,18],["2027-07-27",6,24],["2027-08-02",7,1],["2027-08-16",7,15],["2027-08-19",7,18],["2027-08-25",7,24],["2027-09-01",8,1],["2027-09-15",8,15],["2027-09-18",8,18],["2027-09-24",8,24],["2027-09-30",9,1]];
+  var wd='일월화수목금토',now=new Date(),t=new Date(now.getFullYear(),now.getMonth(),now.getDate());
+  var ul=document.getElementById('days'),n=0;if(ul){
+  raw.forEach(function(r){
+    if(n>=7)return;var p=r[0].split('-'),d=new Date(+p[0],p[1]-1,+p[2]);if(d<t)return;
+    var sp=SP[r[1]+'-'+r[2]],name=sp||R[r[2]];
+    var li=document.createElement('li');if(sp)li.className='sp';
+    li.innerHTML='<span class="d">'+(+p[1])+'.'+(+p[2])+' ('+wd[d.getDay()]+')</span><span class="n">'+name+'</span><span class="lunar">음 '+r[1]+'.'+r[2]+'</span>';
+    ul.appendChild(li);n++;
+  });
+  if(!n)ul.innerHTML='<li>새 일정을 준비하고 있습니다.</li>';}
+
+  // 복사
+  function copy(text,btn){var orig=btn.textContent;function ok(){btn.textContent='복사됨';setTimeout(function(){btn.textContent=orig},1600)}
+    try{navigator.clipboard.writeText(text).then(ok,function(){sel()})}catch(e){sel()}
+    function sel(){var el=document.getElementById(btn.dataset.copy||'msg');var r=document.createRange();r.selectNodeContents(el);var s=getSelection();s.removeAllRanges();s.addRange(r);btn.textContent='길게 눌러 복사하세요'}}
+  document.querySelectorAll('.copy').forEach(function(btn){btn.addEventListener('click',function(){copy(document.getElementById(btn.dataset.copy).textContent,btn)})});
+
+  // 신청
+  var f=document.getElementById('form'),err=document.getElementById('err');
+  f.addEventListener('submit',function(e){
+    e.preventDefault();
+    var E=f.elements,name=E['name'].value.trim(),phone=E['phone'].value.trim();
+    if(!name||!phone){err.textContent='성함과 연락처를 적어 주세요.';err.hidden=false;return}
+    if(!document.getElementById('f-agree').checked){err.textContent='개인정보 수집에 동의해 주셔야 연락드릴 수 있습니다.';err.hidden=false;return}
+    err.hidden=true;
+    var m='[미륵사 상담 신청]\n성함: '+name+'\n연락처: '+phone+'\n자녀 학년: '+E['grade'].value+'\n상담 종류: '+E['type'].value+'\n희망 방식: '+E['how'].value+'\n고민: '+(E['memo'].value.trim()||'-');
+    document.getElementById('msg').textContent=m;
+    document.getElementById('done').hidden=false;f.hidden=true;
+    document.getElementById('done').scrollIntoView({block:'start'});
+  });
+  var cm=document.getElementById('copyMsg');cm.addEventListener('click',function(){copy(document.getElementById('msg').textContent,cm)});
+})();
+</script>
+
+</body></html>
